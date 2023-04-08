@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find A Property</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7fbb7ae68e.js" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <script defer src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Linking required Jquery files -->
+    <script src="jQuery1.js"></script>
+    <script src="/jquery/jquery-ui.js"></script>
+    <link href="jquery-ui.css" rel="stylesheet">
+    <link href="http://code.jquery.com/ui/1.13.2/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+
+    <link href="/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    <nav class="navbar bg-primary" style="background-color: blue">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/main.html">
+            <i class="fa-solid fa-house-user"></i> Dream Homes
+          </a>
+        </div>
+      </nav>
+
+  <!-- Search Box  -->
+  <section class="sec1"> 
+
+  <div class="container-md p-5 " id="mainCont">          <!-- Use of Bootstrap grid boxes to seperate elements in the search box-->
+      <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            <h1>Find A Property</h1>
+          </div>
+        </div>
+      </div>
+  
+  <div class="container text-center">
+      <div class="row row-cols-2">
+        <div class="col"><p class="fs-5">Min Bedrooms:</p>                <!-- Using JQuery spinner for Min and Max bedrooms-->
+          <input id="spinner" value="2">
+        </div>
+        <div class="col"><p class="fs-5">Property Type</p>
+          <select class="dropdown-item" name="property" id="property">      <!-- Using JQuery select menu for house type and date added-->
+              <option value="Flat"> Flat </option>
+              <option value="House"> House </option>
+              <option value="Any" selected> Any </option>
+          </select>
+         </div>
+        <div class="col"><p class="fs-5">Max Bedrooms:</p>
+          <input id="spinner2" value="10">
+        </div>
+        <div class="col"> <p class="fs-5">Date Added</p>
+          <select  name="time" id="time">
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+              <option value="Anytime" selected>Anytime</option>
+          </select>
+          </div>
+          </div>
+        </div>
+
+      <div class="container text-center">
+        <div class="row">
+          <div class="col">
+              <p class="box fs-5">
+                <h3 class="fs-5">Price Range</h3> 
+                <input type="text" id="amount" readonly class="goldSliderText">        <!-- Using jQuery slider widget to search price ranges-->
+              </p>  
+            <div id="slider-range"></div>
+          </div>
+        </div>
+      </div>
+
+  <br><br>
+    <div class="d-grid gap-2">
+      <button class="btn btn-primary" type="button" id="Search">Search</button>
+      <div class="container text-center">
+      <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-outline-success" id="viewFavourites">View Favourites</button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-outline-danger" id="clearFavourites">Clear All</button>
+      </div>
+    </div>
+  </div>
+     
+
+    </div>
+  </div>
+ 
+    
+  </section>
+
+    <section class="sec2">
+      <div id="Placeholder"></div>
+
+      <div id="Placeholder2"></div>
+    </section>
+
+    <!-- Footer -->
+    <div class="card-footer text-muted">
+      <div class="social">
+        <a href="http://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a href="http://www.twiiter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+        <a href="http://www.snapchat.com" target="_blank"><i class="fa-brands fa-snapchat"></i></a>
+        <a href="http://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+
+      <ul class="list">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">Services</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Terms</a>
+        </li>
+        <li>
+          <a href="#">Privacy Policy</a>
+        </li>
+      </ul>
+      <p class="copyright">
+        ©Copyright 2022-2022. <br>
+      All rights reserved. <b>DreamHome</b>
+      </p>
+    </div>
+
+
+
+
+
+
+
+
+<script>
+
+  // JSON data of all properties
+    var data = {
+        "properties": [
+            {
+                "id":"prop1",
+                "type":"House",
+                "bedrooms":3,
+                "price":750000,
+                "tenure":"Freehold",
+                "description":"Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and withineasy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
+                "location":"Petts Wood Road, Petts Wood, Orpington",
+                "picture":"images/prop1picBig.jpeg",
+                "url":"properties/prop1.html",
+                "added": {
+                    "month":"October",
+                    "day":12,
+                    "year":2022
+                }
+            },
+            {
+                "id":"prop2",
+                "type":"Flat",
+                "bedrooms":2,
+                "price":399995,
+                "tenure":"Freehold",
+                "description":"Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. <br>The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
+                "location":"Crofton Road Orpington BR6",
+                "picture":"images/prop2picBig.jpg",
+                "url":"properties/prop2.html",
+                "added": {
+                    "month":"September",
+                    "day":14,
+                    "year":2022
+                }
+            },
+            {
+                "id":"prop3",
+                "type":"Flat",
+                "bedrooms":4,
+                "price":3500000,
+                "tenure":"Freehold",
+                "description":"Located on a sought-after road in the heart of Highgate and occupying a two-acre site, a bespoke family home with the accommodation predominantly arranged over three floors with the benefit of a substantial, self-contained staff lodge. The luxurious entrance hall of this stunning home has a glass lift to each floor. From the impressive entrance hall, there is the formal sitting and dining room that overlooks the magnificent grounds, that opens onto the breakfast room and in turn opens onto the kitchen.",
+                "location":"Merton Lane, London, N6",
+                "picture":"images/prop3picBig.jpeg",
+                "url":"properties/prop3.html",
+                "added": {
+                    "month":"December",
+                    "day":01,
+                    "year":2022
+                }
+            },
+            {
+                "id":"prop4",
+                "type":"House",
+                "bedrooms":7,
+                "price":500000,
+                "tenure":"Freehold",
+                "description":"A modern two storey house for sale situated in this popular residential cul-de-sac set back from Sydenham Hill.The property has accommodation comprising three bedrooms, study/bedroom four, spacious 29' x 14' open-plan lounge/dining room, kitchen, bathroom and separate WC.  Externally to the rear there is a secluded patio garden which in turn gives direct access into Dulwich Woods. There is also a further enclosed patio area to the front of the house and a garage situated en-bloc",
+                "location":"Crouchmans Close, Sydenham, London, SE26",
+                "picture":"images/prop4picBig.jpeg",
+                "url":"properties/prop4.html",
+                "added": {
+                    "month":"January",
+                    "day":25,
+                    "year":2022
+                }
+            },
+            {
+                "id":"prop5",
+                "type":"House",
+                "bedrooms":9,
+                "price":2500000,
+                "tenure":"Freehold",
+                "description":"To describe this as a 4 bedroomed detached house simply does not do this house the justice it deserves.The current owners have built this house over a 2 year period and the result is magnificent! Fantastic fixtures and fittings including; triple glazed window and doors, underfloor heating, bluetooth speakers, bespoke modern fitted kitchens and luxury bathroom fittings with Lusso sanitary ware.",
+                "location":"Belvedere, Cornbirthwaite Road, Windermere, Cumbria, LA23 1DJ",
+                "picture":"images/prop5picBig.jpeg",
+                "url":"properties/prop5.html",
+                "added": {
+                    "month":"August",
+                    "day":15,
+                    "year":2022
+                }
+            },
+            {
+                "id":"prop6",
+                "type":"House",
+                "bedrooms":8,
+                "price":2000000,
+                "tenure":"Freehold",
+                "description":" Lawns from an elevated perch, the understated glamour of Whinthwaite House as approached along its sweeping driveway (accessible from two entrances) is an instant draw.Park up in the triple car garage, with double electric doors. Above the garage is a one-bedroom annexe, replete with fully fitted high specification kitchen. Ideal as independent accommodation for guests, visitors or relatives, this sumptuous space, warmed by underfloor heating could serve as guest accommodation, a home office or gym.Whinthwaite House, however, is so much more than its imposing stonework; it is a home lovingly redesigned, restored and renovated from the tips of its re-pointed chimney stacks to the marbled tiling of its wet-room ensuite.Dating back to 1874, understated glamour is evident in each room at Whinthwaite House and is lovingly teased out through the use of complementary and sympathetic décor; at once paying homage to the home's original features and heralding its arrival into the 21st century.Sense this immediately upon arrival through the formal entrance, painted in timeless tones which allow the patterns of the original Victorian tiles underfoot to take centre stage. Overhead is the first of many, carefully chosen, recreation ceiling roses, which pay testament to the stature of this home. Already, the views to stunning scenery are framed in the windows.Continue through into the grand reception hall; a room with which it is impossible not to fall in love instantly. Above, epitomising the Victorian grandeur of the home, a coffered ceiling is embellished by an ornate ceiling rose.",
+                "location":"Whinthwaite House, Brigsteer Road, Levens, Kendal, LA8 8NU",
+                "picture":"images/prop6picBig.jpeg",
+                "url":"properties/prop6.html",
+                "added": {
+                    "month":"February",
+                    "day":05,
+                    "year":2022
+                }
+            },
+            {
+                "id":"prop7",
+                "type":"Flat",
+                "bedrooms":3,
+                "price":2500000,
+                "tenure":"Freehold",
+                "description":"Private and prestigious, commanding views over 487 acres of royal parkland and gardens, the property was built originally in 1875, and has been carefully restored and completely refurbished to provide one of the largest lateral penthouse apartments over three floors with an internal passenger lift and terraces overlooking Regent's Park.Extending to approximately 5,746 square feet (533 square meters), the flexible accommodation is made up of 5 bedrooms, 4 receptions rooms and 5 bathrooms with private terraces and balconies as well as resident's parking and a private garage.",
+                "location":"Cambridge Gate, Regents Park, London, NW1",
+                "picture":"images/prop7picBig.jpeg",
+                "url":"properties/prop7.html",
+                "added": {
+                    "month":"March",
+                    "day":10,
+                    "year":2022
+                }
+            },
+ ]}
+
+</script>
+    
+</body>
+</html>
